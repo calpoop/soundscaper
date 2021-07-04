@@ -39,7 +39,7 @@ amplitude1 = np.sin(2*np.pi*signal1Frequency*time)
 amplitude2 = np.sin(2*np.pi*signal2Frequency*time)
  
 
-# Create a 5 x 1 subplot
+# Create a 8 x 1 subplot
 figure, axis = plotter.subplots(8, 1)
 plotter.subplots_adjust(hspace=1)
 figure.set_size_inches(10, 20)
