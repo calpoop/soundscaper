@@ -83,11 +83,9 @@ plotGraphOnAxis(axis[4], 'Fourier transform depicting frequency components (norm
 normalizedFourierTransform = normalizedFourierTransform[range(int(len(amplitude)/2))] # Exclude sampling frequency
 plotGraphOnAxis(axis[5], 'Fourier transform depicting the frequency components (normalized, first mode only)', normalizedFrequencies, abs(normalizedFourierTransform),'Frequency (Hz)','Amplitude')
 
-
 #Calculate an inverse FFT
 reconstructedAmplitude = np.fft.ifft(normalizedFourierTransform)*normalizationFactor
 plotGraphOnAxis(axis[6], 'Inverse fourier transformation using normalized fourier transformation as input', time[::2],reconstructedAmplitude,"Time (s)","Amplitude")
-
 
 
 plotter.savefig('example1.png')
