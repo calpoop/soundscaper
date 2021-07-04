@@ -75,19 +75,17 @@ plotGraphOnAxis(axis[3], 'Fourier transform depicting frequency components (un-n
 #Normalize
 normalizedValues      = np.arange(int(tpCount/2))
 normalizedFrequencies = normalizedValues/timePeriod
-normalizedFourierTransform = np.fft.fft(amplitude)/len(amplitude)           # Normalize amplitude
+normalizationFactor = len(amplitude)  
+normalizedFourierTransform = np.fft.fft(amplitude)/normalizationFactor        # Normalize amplitude
 plotGraphOnAxis(axis[4], 'Fourier transform depicting frequency components (normalized)', frequencies, abs(normalizedFourierTransform),'Frequency (Hz)','Amplitude')
 
-
+#Take just the first half, as fourier transformations create a duplication
 normalizedFourierTransform = normalizedFourierTransform[range(int(len(amplitude)/2))] # Exclude sampling frequency
 plotGraphOnAxis(axis[5], 'Fourier transform depicting the frequency components (normalized, first mode only)', normalizedFrequencies, abs(normalizedFourierTransform),'Frequency (Hz)','Amplitude')
 
-
-
-
-
-
-
+#Calculate an inverse FFT
+reconstructedAmplitude = np.fft.ifft(normalizedFourierTransform)*normalizationFactor
+plotGraphOnAxis(axis[6], 'Inverse fourier transformation using normalized fourier transformation as input', time[::2],reconstructedAmplitude,"Time (s)","Amplitude")
 
 
 plotter.savefig('example1.png')
