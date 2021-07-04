@@ -78,7 +78,7 @@ normalizedFrequencies = normalizedValues/timePeriod
 normalizedFourierTransform = np.fft.fft(amplitude)/len(amplitude)           # Normalize amplitude
 plotGraphOnAxis(axis[4], 'Fourier transform depicting frequency components (normalized)', frequencies, abs(normalizedFourierTransform),'Frequency (Hz)','Amplitude')
 
-
+#Take just the first half, as fourier transformations create a duplication
 normalizedFourierTransform = normalizedFourierTransform[range(int(len(amplitude)/2))] # Exclude sampling frequency
 plotGraphOnAxis(axis[5], 'Fourier transform depicting the frequency components (normalized, first mode only)', normalizedFrequencies, abs(normalizedFourierTransform),'Frequency (Hz)','Amplitude')
 
